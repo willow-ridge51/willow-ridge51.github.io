@@ -1,0 +1,1559 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>兔崽baby推特大赛 - 官方赛事_影像创作社区</title>
+<meta name="description" content="兔崽baby推特大赛官方网站，专注影像创意赛事与创作者社区，收录往届精品内容、参赛攻略与创作者故事，持续运营的原创影像品牌平台。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23ff6b5e'/%3E%3Cpath d='M24 18l20 14-20 14z' fill='%23fff7f2'/%3E%3Ccircle cx='18' cy='18' r='4' fill='%23ffd166'/%3E%3C/svg%3E">
+<style>
+:root{
+  --tb-coral:#ff6b5e;
+  --tb-coral-deep:#e14a3d;
+  --tb-ink:#241f2b;
+  --tb-ink-soft:#4c4356;
+  --tb-mist:#f7f2ec;
+  --tb-card:#ffffff;
+  --tb-line:rgba(36,31,43,.12);
+  --tb-gold:#ffb703;
+  --tb-mint:#2ec4a6;
+  --tb-violet:#7b5cff;
+  --tb-shadow:0 18px 40px -22px rgba(36,31,43,.45);
+  --tb-radius:18px;
+  --tb-sticky-h:96px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:var(--tb-sticky-h);}
+body{
+  margin:0;
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  color:var(--tb-ink);
+  background:
+    radial-gradient(1200px 500px at 85% -10%, rgba(255,183,3,.18), transparent 60%),
+    radial-gradient(900px 480px at -10% 0%, rgba(123,92,255,.14), transparent 55%),
+    var(--tb-mist);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,h4{margin:0;line-height:1.3;}
+p{margin:0 0 1em;}
+ul{margin:0;padding:0;list-style:none;}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit;}
+.tb-wrap{width:min(1180px,92vw);margin:0 auto;}
+.tb-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+
+/* ---------- 吸顶区：公告条 + 页头 ---------- */
+.tb-sticky{position:sticky;top:0;z-index:60;}
+.tb-notice{
+  background:linear-gradient(90deg,var(--tb-ink) 0%,#3d3348 55%,var(--tb-coral-deep) 100%);
+  color:#fff5ef;font-size:13.5px;
+}
+.tb-notice__inner{display:flex;align-items:center;gap:14px;padding:7px 0;flex-wrap:wrap;}
+.tb-notice__tag{
+  flex:none;background:var(--tb-gold);color:var(--tb-ink);
+  font-weight:700;font-size:12px;letter-spacing:.08em;
+  padding:2px 9px;border-radius:999px;
+}
+.tb-notice__list{display:flex;gap:22px;flex-wrap:wrap;font-size:13px;}
+.tb-notice__list li{position:relative;padding-left:12px;opacity:.94;}
+.tb-notice__list li::before{content:"";position:absolute;left:0;top:.72em;width:4px;height:4px;border-radius:50%;background:var(--tb-gold);}
+.tb-notice__time{opacity:.75;margin-left:4px;}
+.tb-head{
+  background:rgba(247,242,236,.92);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--tb-line);
+}
+.tb-head__inner{display:flex;align-items:center;gap:20px;padding:12px 0;}
+.tb-logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.02em;}
+.tb-logo__mark{
+  width:40px;height:40px;border-radius:13px;flex:none;
+  background:linear-gradient(140deg,var(--tb-coral),var(--tb-gold));
+  display:grid;place-items:center;color:#fff;font-size:18px;
+  box-shadow:0 8px 18px -8px rgba(225,74,61,.8);
+}
+.tb-logo__txt{font-size:18px;line-height:1.15;}
+.tb-logo__txt small{display:block;font-size:10.5px;letter-spacing:.22em;color:var(--tb-ink-soft);font-weight:600;}
+.tb-nav{margin-left:auto;display:flex;align-items:center;gap:4px;flex-wrap:wrap;}
+.tb-nav a{
+  font-size:14.5px;padding:8px 12px;border-radius:10px;color:var(--tb-ink-soft);
+  transition:background .2s,color .2s;
+}
+.tb-nav a:hover,.tb-nav a.is-active{background:rgba(255,107,94,.14);color:var(--tb-coral-deep);font-weight:600;}
+.tb-search{position:relative;display:flex;align-items:center;gap:8px;}
+.tb-search input{
+  width:190px;padding:9px 12px 9px 34px;border-radius:12px;
+  border:1px solid var(--tb-line);background:#fff;font-size:14px;color:var(--tb-ink);
+  outline:none;transition:border-color .2s,box-shadow .2s;
+}
+.tb-search input:focus{border-color:var(--tb-coral);box-shadow:0 0 0 3px rgba(255,107,94,.18);}
+.tb-search__icon{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:16px;height:16px;pointer-events:none;opacity:.55;}
+.tb-search__tip{
+  position:absolute;top:calc(100% + 8px);left:0;right:0;z-index:40;
+  background:#fff;border:1px solid var(--tb-line);border-radius:12px;
+  box-shadow:var(--tb-shadow);padding:8px 10px;font-size:13px;color:var(--tb-ink-soft);
+  display:none;
+}
+.tb-search__tip.is-show{display:block;}
+.tb-search__tip strong{color:var(--tb-coral-deep);}
+.tb-burger{display:none;margin-left:auto;width:42px;height:42px;border-radius:12px;border:1px solid var(--tb-line);background:#fff;}
+.tb-burger span{display:block;width:18px;height:2px;background:var(--tb-ink);margin:4px auto;border-radius:2px;transition:transform .25s,opacity .25s;}
+.tb-burger.is-open span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+.tb-burger.is-open span:nth-child(2){opacity:0;}
+.tb-burger.is-open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+
+/* ---------- 首屏 ---------- */
+.tb-hero{padding:56px 0 20px;}
+.tb-hero__grid{display:grid;grid-template-columns:1.06fr .94fr;gap:46px;align-items:center;}
+.tb-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;
+  letter-spacing:.16em;color:var(--tb-coral-deep);text-transform:uppercase;
+  background:rgba(255,107,94,.12);padding:5px 12px;border-radius:999px;
+}
+.tb-hero h1{
+  font-size:clamp(38px,5.2vw,62px);font-weight:900;letter-spacing:-.02em;
+  margin:18px 0 6px;
+  background:linear-gradient(120deg,var(--tb-ink) 30%,var(--tb-coral-deep) 78%,var(--tb-gold));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.tb-hero__slogan{font-size:18px;font-weight:700;color:var(--tb-ink-soft);margin-bottom:16px;}
+.tb-hero__desc{font-size:15px;color:var(--tb-ink-soft);max-width:56ch;}
+.tb-hero__cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;}
+.tb-btn{
+  display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;
+  font-weight:700;font-size:14.5px;transition:transform .18s,box-shadow .18s,background .18s;
+}
+.tb-btn--solid{background:linear-gradient(120deg,var(--tb-coral),var(--tb-coral-deep));color:#fff;box-shadow:0 14px 26px -14px rgba(225,74,61,.85);}
+.tb-btn--solid:hover{transform:translateY(-2px);box-shadow:0 18px 30px -14px rgba(225,74,61,.9);}
+.tb-btn--ghost{border:1.5px solid var(--tb-line);background:#fff;color:var(--tb-ink);}
+.tb-btn--ghost:hover{border-color:var(--tb-coral);color:var(--tb-coral-deep);transform:translateY(-2px);}
+.tb-stats{display:flex;gap:30px;margin-top:32px;flex-wrap:wrap;}
+.tb-stats div strong{display:block;font-size:26px;font-weight:900;letter-spacing:-.01em;color:var(--tb-ink);}
+.tb-stats div span{font-size:12.5px;color:var(--tb-ink-soft);letter-spacing:.04em;}
+.tb-hero__visual{position:relative;}
+.tb-hero__frame{
+  border-radius:26px;overflow:hidden;box-shadow:0 34px 60px -34px rgba(36,31,43,.6);
+  border:6px solid #fff;transform:rotate(-1.4deg);background:#fff;
+}
+.tb-hero__badge{
+  position:absolute;right:-10px;bottom:22px;background:#fff;border-radius:16px;
+  padding:12px 16px;box-shadow:var(--tb-shadow);font-size:13px;font-weight:700;
+  display:flex;align-items:center;gap:10px;
+}
+.tb-hero__badge i{width:10px;height:10px;border-radius:50%;background:var(--tb-mint);box-shadow:0 0 0 4px rgba(46,196,166,.22);}
+.tb-hero__tape{
+  position:absolute;left:-14px;top:-14px;background:var(--tb-violet);color:#fff;
+  font-size:12px;font-weight:800;letter-spacing:.1em;padding:7px 14px;border-radius:10px;
+  transform:rotate(-6deg);box-shadow:0 12px 22px -12px rgba(123,92,255,.9);
+}
+
+/* ---------- 通用 section ---------- */
+.tb-section{padding:64px 0;}
+.tb-section--alt{background:linear-gradient(180deg,rgba(255,255,255,.75),rgba(255,255,255,0));}
+.tb-head-block{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:34px;}
+.tb-head-block h2{font-size:clamp(24px,3vw,34px);font-weight:900;letter-spacing:-.01em;}
+.tb-head-block h2 em{font-style:normal;color:var(--tb-coral-deep);}
+.tb-head-block p{max-width:52ch;color:var(--tb-ink-soft);font-size:14.5px;margin:6px 0 0;}
+.tb-kicker{font-size:12.5px;font-weight:800;letter-spacing:.2em;color:var(--tb-violet);text-transform:uppercase;margin-bottom:6px;}
+
+/* ---------- 焦点内容 ---------- */
+.tb-focus{display:grid;grid-template-columns:1.25fr 1fr;gap:22px;}
+.tb-focus__main{
+  position:relative;border-radius:22px;overflow:hidden;min-height:340px;
+  box-shadow:var(--tb-shadow);display:flex;flex-direction:column;justify-content:flex-end;
+  color:#fff;isolation:isolate;
+}
+.tb-focus__main .tb-cover{position:absolute;inset:0;z-index:-2;}
+.tb-focus__main .tb-cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,14,26,.06) 30%,rgba(20,14,26,.82));}
+.tb-focus__body{padding:26px 26px 22px;}
+.tb-focus__body h3{font-size:22px;font-weight:800;margin-bottom:8px;}
+.tb-focus__body p{font-size:13.5px;margin:0;opacity:.88;max-width:46ch;}
+.tb-meta{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;opacity:.85;margin-top:10px;}
+.tb-focus__side{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.tb-mini{
+  background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 12px 30px -20px rgba(36,31,43,.5);
+  display:flex;flex-direction:column;transition:transform .2s;
+}
+.tb-mini:hover{transform:translateY(-4px);}
+.tb-mini .tb-cover{aspect-ratio:16/9;}
+.tb-mini__body{padding:12px 14px 14px;}
+.tb-mini__body h4{font-size:14.5px;font-weight:700;line-height:1.45;margin-bottom:6px;}
+.tb-mini__body span{font-size:12px;color:var(--tb-ink-soft);}
+
+/* ---------- 封面通用 ---------- */
+.tb-cover{position:relative;background:#ddd;overflow:hidden;}
+.tb-cover svg{width:100%;height:100%;object-fit:cover;display:block;}
+.tb-cover .tb-play{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.9);
+  display:grid;place-items:center;box-shadow:0 8px 18px rgba(0,0,0,.25);
+  transition:transform .2s;
+}
+.tb-cover:hover .tb-play{transform:translate(-50%,-50%) scale(1.1);}
+.tb-tag{
+  position:absolute;left:10px;top:10px;background:rgba(36,31,43,.78);color:#fff;
+  font-size:11px;font-weight:700;letter-spacing:.05em;padding:3px 9px;border-radius:999px;
+  backdrop-filter:blur(4px);
+}
+
+/* ---------- 视频流 ---------- */
+.tb-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;}
+.tb-chip{
+  border:1px solid var(--tb-line);background:#fff;border-radius:999px;padding:7px 15px;
+  font-size:13px;font-weight:600;color:var(--tb-ink-soft);transition:all .18s;
+}
+.tb-chip:hover{border-color:var(--tb-coral);color:var(--tb-coral-deep);}
+.tb-chip.is-active{background:var(--tb-ink);color:#fff;border-color:var(--tb-ink);}
+.tb-stream{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.tb-card{
+  background:#fff;border-radius:18px;overflow:hidden;
+  box-shadow:0 14px 34px -24px rgba(36,31,43,.55);
+  display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s;
+}
+.tb-card:hover{transform:translateY(-5px);box-shadow:0 22px 42px -24px rgba(36,31,43,.6);}
+.tb-card .tb-cover{aspect-ratio:16/9;}
+.tb-card__body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px;flex:1;}
+.tb-card__body h3{font-size:16px;font-weight:800;line-height:1.45;}
+.tb-card__body p{font-size:13px;color:var(--tb-ink-soft);margin:0;line-height:1.6;}
+.tb-card__foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:8px;border-top:1px dashed var(--tb-line);}
+.tb-author{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--tb-ink-soft);}
+.tb-avatar{
+  width:28px;height:28px;border-radius:50%;flex:none;display:grid;place-items:center;
+  font-size:12.5px;font-weight:800;color:#fff;letter-spacing:0;
+}
+.tb-actions{display:flex;gap:4px;}
+.tb-act{
+  display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--tb-ink-soft);
+  padding:4px 7px;border-radius:8px;transition:background .18s,color .18s;
+}
+.tb-act:hover{background:rgba(255,107,94,.12);color:var(--tb-coral-deep);}
+.tb-act.is-on{color:var(--tb-coral-deep);font-weight:700;}
+.tb-act svg{width:15px;height:15px;}
+
+/* ---------- 专题 ---------- */
+.tb-topics{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.tb-topic{
+  position:relative;border-radius:20px;overflow:hidden;padding:24px;min-height:220px;
+  color:#fff;display:flex;flex-direction:column;justify-content:flex-end;isolation:isolate;
+  box-shadow:var(--tb-shadow);transition:transform .2s;
+}
+.tb-topic:hover{transform:translateY(-4px);}
+.tb-topic .tb-cover{position:absolute;inset:0;z-index:-2;}
+.tb-topic .tb-cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,14,26,.1),rgba(20,14,26,.78));}
+.tb-topic h3{font-size:19px;font-weight:800;margin-bottom:6px;}
+.tb-topic p{font-size:13px;margin:0 0 10px;opacity:.88;}
+.tb-topic__status{font-size:11.5px;font-weight:700;display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.16);padding:4px 11px;border-radius:999px;backdrop-filter:blur(4px);}
+
+/* ---------- 创作者 ---------- */
+.tb-creators{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.tb-creator{
+  background:#fff;border-radius:18px;padding:22px 20px;text-align:center;
+  box-shadow:0 14px 32px -26px rgba(36,31,43,.6);transition:transform .2s;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+}
+.tb-creator:hover{transform:translateY(-4px);}
+.tb-creator .tb-avatar{width:56px;height:56px;font-size:21px;box-shadow:0 10px 20px -10px rgba(36,31,43,.5);}
+.tb-creator h3{font-size:15.5px;font-weight:800;}
+.tb-creator small{font-size:12px;color:var(--tb-coral-deep);font-weight:700;letter-spacing:.04em;}
+.tb-creator p{font-size:12.5px;color:var(--tb-ink-soft);margin:0;line-height:1.65;}
+.tb-creator__nums{display:flex;gap:16px;margin-top:4px;font-size:11.5px;color:var(--tb-ink-soft);}
+.tb-creator__nums b{display:block;font-size:15px;color:var(--tb-ink);}
+
+/* ---------- 影像墙 ---------- */
+.tb-wall{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:16px;}
+.tb-wall figure{margin:0;position:relative;border-radius:16px;overflow:hidden;box-shadow:0 14px 30px -24px rgba(36,31,43,.6);}
+.tb-wall figure .tb-cover{width:100%;height:100%;}
+.tb-wall figure figcaption{
+  position:absolute;left:0;right:0;bottom:0;padding:10px 12px;color:#fff;font-size:12.5px;font-weight:700;
+  background:linear-gradient(180deg,transparent,rgba(20,14,26,.8));
+}
+.tb-wall figure:nth-child(1){grid-column:span 2;grid-row:span 2;}
+.tb-wall figure:nth-child(4){grid-row:span 2;}
+.tb-wall figure:nth-child(6){grid-column:span 2;}
+
+/* ---------- 深度解析 ---------- */
+.tb-longform{
+  background:#fff;border-radius:24px;padding:clamp(24px,4vw,48px);
+  box-shadow:var(--tb-shadow);border:1px solid rgba(255,255,255,.6);
+}
+.tb-longform h2{font-size:clamp(24px,3vw,32px);margin-bottom:14px;}
+.tb-longform h3{font-size:17.5px;font-weight:800;margin:26px 0 8px;color:var(--tb-ink);}
+.tb-longform h3::before{content:"";display:inline-block;width:18px;height:4px;border-radius:4px;background:var(--tb-coral);vertical-align:middle;margin-right:9px;transform:translateY(-2px);}
+.tb-longform p{font-size:14.8px;color:var(--tb-ink-soft);line-height:1.9;}
+.tb-longform strong{color:var(--tb-coral-deep);}
+.tb-longform blockquote{
+  margin:22px 0;padding:16px 20px;border-left:4px solid var(--tb-gold);
+  background:rgba(255,183,3,.1);border-radius:0 14px 14px 0;font-size:14.5px;color:var(--tb-ink-soft);
+}
+
+/* ---------- 评价 ---------- */
+.tb-quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.tb-quote{
+  background:#fff;border-radius:16px;padding:20px;font-size:13.5px;color:var(--tb-ink-soft);
+  box-shadow:0 12px 30px -24px rgba(36,31,43,.55);position:relative;
+}
+.tb-quote::before{content:"“";position:absolute;top:6px;right:16px;font-size:44px;color:rgba(255,107,94,.22);line-height:1;}
+.tb-quote p{margin:0 0 12px;line-height:1.8;}
+.tb-quote footer{display:flex;align-items:center;gap:9px;font-size:12px;font-weight:700;color:var(--tb-ink);}
+
+/* ---------- 动态 & 合作 ---------- */
+.tb-two{display:grid;grid-template-columns:1.35fr 1fr;gap:28px;align-items:start;}
+.tb-timeline{background:#fff;border-radius:20px;padding:26px;box-shadow:var(--tb-shadow);}
+.tb-timeline li{padding:14px 0 14px 22px;border-left:2px solid var(--tb-line);position:relative;}
+.tb-timeline li:last-child{border-left-color:transparent;}
+.tb-timeline li::before{content:"";position:absolute;left:-6px;top:22px;width:10px;height:10px;border-radius:50%;background:var(--tb-coral);box-shadow:0 0 0 4px rgba(255,107,94,.16);}
+.tb-timeline time{font-size:11.5px;font-weight:700;color:var(--tb-violet);letter-spacing:.06em;}
+.tb-timeline h3{font-size:15px;font-weight:800;margin:3px 0 4px;}
+.tb-timeline p{font-size:13px;margin:0;color:var(--tb-ink-soft);}
+.tb-partners{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.tb-partner{
+  background:#fff;border-radius:14px;padding:18px 16px;display:flex;align-items:center;gap:12px;
+  box-shadow:0 12px 28px -26px rgba(36,31,43,.6);font-size:13.5px;font-weight:700;
+}
+.tb-partner i{width:34px;height:34px;border-radius:10px;flex:none;display:grid;place-items:center;color:#fff;font-size:14px;font-weight:800;font-style:normal;}
+
+/* ---------- FAQ / 联系 ---------- */
+.tb-faq{display:grid;gap:12px;}
+.tb-faq details{
+  background:#fff;border-radius:14px;padding:16px 20px;box-shadow:0 12px 28px -26px rgba(36,31,43,.6);
+}
+.tb-faq summary{font-weight:700;font-size:14.5px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:14px;align-items:center;}
+.tb-faq summary::-webkit-details-marker{display:none;}
+.tb-faq summary::after{content:"+";font-size:19px;color:var(--tb-coral-deep);font-weight:800;transition:transform .2s;}
+.tb-faq details[open] summary::after{transform:rotate(45deg);}
+.tb-faq p{font-size:13.5px;color:var(--tb-ink-soft);margin:12px 0 0;line-height:1.8;}
+.tb-contact{
+  margin-top:8px;background:linear-gradient(135deg,var(--tb-ink),#41364d 70%,var(--tb-coral-deep));
+  color:#fff;border-radius:24px;padding:clamp(26px,4vw,44px);
+  display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center;
+}
+.tb-contact h2{font-size:clamp(22px,3vw,30px);margin-bottom:10px;}
+.tb-contact p{font-size:14px;opacity:.82;margin:0;}
+.tb-contact__box{display:flex;flex-direction:column;gap:10px;font-size:13.5px;}
+.tb-contact__box div{background:rgba(255,255,255,.1);border-radius:12px;padding:10px 14px;display:flex;justify-content:space-between;gap:12px;}
+.tb-contact__box span{opacity:.7;}
+.tb-contact .tb-btn--solid{background:linear-gradient(120deg,var(--tb-gold),#ff8f3c);color:var(--tb-ink);box-shadow:none;margin-top:16px;align-self:flex-start;}
+
+/* ---------- 页脚 ---------- */
+.tb-foot{background:var(--tb-ink);color:#cfc6d6;padding:52px 0 26px;margin-top:20px;}
+.tb-foot__grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:30px;}
+.tb-foot h3{color:#fff;font-size:14px;font-weight:800;margin-bottom:12px;letter-spacing:.06em;}
+.tb-foot p,.tb-foot li{font-size:12.8px;line-height:1.9;color:#a99fb4;}
+.tb-foot a:hover{color:var(--tb-gold);}
+.tb-foot__brand{display:flex;align-items:center;gap:10px;margin-bottom:12px;color:#fff;font-weight:800;font-size:16px;}
+.tb-foot__bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:34px;padding-top:18px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12px;color:#8f859b;}
+
+/* ---------- 浮层组件 ---------- */
+.tb-toast{
+  position:fixed;left:50%;bottom:34px;transform:translate(-50%,20px);z-index:120;
+  background:var(--tb-ink);color:#fff;font-size:13.5px;padding:11px 20px;border-radius:999px;
+  box-shadow:0 18px 34px -16px rgba(0,0,0,.6);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;
+  max-width:86vw;
+}
+.tb-toast.is-show{opacity:1;transform:translate(-50%,0);}
+.tb-top{
+  position:fixed;right:22px;bottom:26px;z-index:90;width:46px;height:46px;border-radius:50%;
+  background:#fff;box-shadow:0 14px 30px -14px rgba(36,31,43,.55);display:grid;place-items:center;
+  opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;
+}
+.tb-top.is-show{opacity:1;pointer-events:auto;}
+.tb-top:hover{transform:translateY(-3px);}
+.tb-modal{
+  position:fixed;inset:0;z-index:140;display:none;place-items:center;padding:20px;
+  background:rgba(24,19,30,.55);backdrop-filter:blur(4px);
+}
+.tb-modal.is-show{display:grid;}
+.tb-modal__panel{
+  background:#fff;border-radius:20px;padding:26px;width:min(460px,100%);
+  box-shadow:0 34px 70px -30px rgba(0,0,0,.6);position:relative;
+  animation:tb-pop .22s ease-out;
+}
+@keyframes tb-pop{from{transform:translateY(14px) scale(.97);opacity:0}to{transform:none;opacity:1}}
+.tb-modal__panel h3{font-size:19px;font-weight:900;margin-bottom:6px;}
+.tb-modal__panel p{font-size:13.5px;color:var(--tb-ink-soft);margin:0 0 16px;}
+.tb-modal__panel textarea,.tb-modal__panel input{
+  width:100%;border:1px solid var(--tb-line);border-radius:12px;padding:10px 12px;font:inherit;font-size:14px;
+  margin-bottom:12px;outline:none;resize:vertical;background:#fdfbf9;
+}
+.tb-modal__panel textarea:focus,.tb-modal__panel input:focus{border-color:var(--tb-coral);}
+.tb-modal__close{position:absolute;right:12px;top:10px;width:32px;height:32px;border-radius:9px;font-size:19px;color:var(--tb-ink-soft);}
+.tb-modal__close:hover{background:rgba(36,31,43,.07);}
+.tb-share-row{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:14px;}
+.tb-share-row button{border:1px solid var(--tb-line);border-radius:10px;padding:8px 14px;font-size:13px;font-weight:700;}
+.tb-share-row button:hover{border-color:var(--tb-coral);color:var(--tb-coral-deep);}
+
+@media (max-width:1020px){
+  .tb-hero__grid{grid-template-columns:1fr;gap:34px;}
+  .tb-focus{grid-template-columns:1fr;}
+  .tb-stream,.tb-topics,.tb-quotes{grid-template-columns:repeat(2,1fr);}
+  .tb-creators{grid-template-columns:repeat(2,1fr);}
+  .tb-two{grid-template-columns:1fr;}
+  .tb-foot__grid{grid-template-columns:1fr 1fr;}
+  .tb-contact{grid-template-columns:1fr;}
+}
+@media (max-width:760px){
+  :root{--tb-sticky-h:112px;}
+  .tb-nav{
+    display:none;position:absolute;left:0;right:0;top:100%;background:#fff;
+    flex-direction:column;align-items:stretch;padding:12px;gap:4px;
+    box-shadow:0 22px 34px -22px rgba(36,31,43,.55);border-bottom:1px solid var(--tb-line);
+  }
+  .tb-nav.is-open{display:flex;}
+  .tb-nav a{padding:11px 13px;}
+  .tb-head__inner{flex-wrap:wrap;position:relative;}
+  .tb-burger{display:block;}
+  .tb-search{order:5;width:100%;}
+  .tb-search input{width:100%;}
+  .tb-stream,.tb-topics,.tb-quotes,.tb-creators{grid-template-columns:1fr;}
+  .tb-focus__side{grid-template-columns:1fr 1fr;}
+  .tb-wall{grid-template-columns:repeat(2,1fr);grid-auto-rows:130px;}
+  .tb-wall figure:nth-child(1){grid-column:span 2;grid-row:span 1;}
+  .tb-wall figure:nth-child(4){grid-row:span 1;}
+  .tb-wall figure:nth-child(6){grid-column:span 2;}
+  .tb-foot__grid{grid-template-columns:1fr;}
+  .tb-notice__list{gap:14px;}
+  .tb-section{padding:46px 0;}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="tb-sticky">
+  <div class="tb-notice">
+    <div class="tb-wrap tb-notice__inner">
+      <span class="tb-notice__tag">官方发布</span>
+      <ul class="tb-notice__list">
+        <li>第六届兔崽baby推特大赛「拾光」主题赛道正式开放报名<span class="tb-notice__time">11-18</span></li>
+        <li>创作者扶持计划新增 30 个名额，作品上传通道已开启<span class="tb-notice__time">11-16</span></li>
+        <li>往届精品内容专区上线，收录 128 部原创短片<span class="tb-notice__time">11-12</span></li>
+      </ul>
+    </div>
+  </div>
+  <header class="tb-head">
+    <div class="tb-wrap tb-head__inner">
+      <a class="tb-logo" href="#top" aria-label="兔崽baby推特大赛官方网站首页">
+        <span class="tb-logo__mark" aria-hidden="true">兔</span>
+        <span class="tb-logo__txt">兔崽baby推特大赛<small>TUZAI BABY FILM</small></span>
+      </a>
+      <button class="tb-burger" id="tbBurger" aria-label="展开导航菜单" aria-expanded="false" aria-controls="tbNav">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="tb-nav" id="tbNav" aria-label="主导航">
+        <a href="#top" class="is-active">首页</a>
+        <a href="#focus">焦点内容</a>
+        <a href="#stream">影像社区</a>
+        <a href="#topics">赛事专题</a>
+        <a href="#creators">创作者</a>
+        <a href="#story">品牌故事</a>
+        <a href="#news">企业动态</a>
+        <a href="#faq">帮助</a>
+      </nav>
+      <div class="tb-search">
+        <svg class="tb-search__icon" viewBox="0 0 24 24" fill="none" stroke="#241f2b" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input type="search" id="tbSearchInput" placeholder="搜索赛事、创作者、专题" aria-label="站内搜索">
+        <div class="tb-search__tip" id="tbSearchTip" role="status"></div>
+      </div>
+    </div>
+  </header>
+</div>
+
+<main id="top">
+
+  <!-- 首屏 -->
+  <section class="tb-hero tb-wrap" aria-labelledby="tbHeroTitle">
+    <div class="tb-hero__grid">
+      <div>
+        <span class="tb-eyebrow">官方网站 · 原创影像品牌</span>
+        <h1 id="tbHeroTitle">兔崽baby推特大赛</h1>
+        <p class="tb-hero__slogan">用一部短片的时间，把生活拍成值得收藏的样子。</p>
+        <p class="tb-hero__desc">兔崽baby推特大赛官方网站，是由兔崽baby影像团队持续运营的原创视频赛事与创作者社区品牌。我们以“拾光”为长期主题，面向影像爱好者、独立创作者与内容团队征集真实、温暖、有力量的短片作品，并提供展映、评审、扶持与交流的完整内容生态。平台坚持正版、高清、专业的选片标准，深耕垂直领域，让每一份真诚的表达都被看见。</p>
+        <div class="tb-hero__cta">
+          <a class="tb-btn tb-btn--solid" href="#topics">查看本届专题</a>
+          <button class="tb-btn tb-btn--ghost" type="button" data-tb-modal="submit">投稿与报名入口</button>
+        </div>
+        <div class="tb-stats">
+          <div><strong data-tb-count="128">128</strong><span>往届收录原创作品</span></div>
+          <div><strong data-tb-count="46">46</strong><span>签约合作创作者</span></div>
+          <div><strong data-tb-count="9">9</strong><span>城市线下展映场次</span></div>
+        </div>
+      </div>
+      <div class="tb-hero__visual">
+        <div class="tb-hero__tape">第六届 · 拾光</div>
+        <div class="tb-hero__frame">
+          <div class="tb-cover" style="aspect-ratio:4/3;">
+            <svg viewBox="0 0 640 480" role="img" aria-label="兔崽baby推特大赛品牌主视觉：暖色光斑中的胶片与镜头">
+              <defs>
+                <linearGradient id="tbHV1" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#ff8f6b"/><stop offset=".55" stop-color="#e14a3d"/><stop offset="1" stop-color="#7b5cff"/>
+                </linearGradient>
+                <radialGradient id="tbHV2" cx=".7" cy=".28" r=".6">
+                  <stop offset="0" stop-color="#ffd166" stop-opacity=".95"/><stop offset="1" stop-color="#ffd166" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <rect width="640" height="480" fill="url(#tbHV1)"/>
+              <rect width="640" height="480" fill="url(#tbHV2)"/>
+              <g opacity=".92" fill="none" stroke="#fff7f2" stroke-width="3">
+                <circle cx="392" cy="196" r="96"/>
+                <circle cx="392" cy="196" r="62"/>
+                <circle cx="392" cy="196" r="26" fill="#fff7f2" stroke="none"/>
+              </g>
+              <g opacity=".55" stroke="#fff7f2" stroke-width="2">
+                <path d="M0 372h640M0 412h640M0 332h640"/>
+              </g>
+              <g fill="#241f2b" opacity=".82">
+                <rect x="58" y="300" width="150" height="96" rx="10"/>
+              </g>
+              <g fill="#ffd166">
+                <rect x="72" y="316" width="18" height="18" rx="4"/>
+                <rect x="98" y="316" width="18" height="18" rx="4"/>
+                <rect x="124" y="316" width="18" height="18" rx="4"/>
+                <rect x="150" y="316" width="18" height="18" rx="4"/>
+                <rect x="176" y="316" width="18" height="18" rx="4"/>
+              </g>
+              <g fill="#fff7f2" font-family="sans-serif" font-weight="700">
+                <text x="58" y="452" font-size="30">TUZAI BABY FILM FESTIVAL</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div class="tb-hero__badge"><i aria-hidden="true"></i>报名通道进行中</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 焦点内容 -->
+  <section class="tb-section tb-wrap" id="focus" aria-labelledby="tbFocusTitle">
+    <div class="tb-head-block">
+      <div>
+        <div class="tb-kicker">Focus Selection</div>
+        <h2 id="tbFocusTitle">焦点内容 · <em>评委推荐</em></h2>
+        <p>由兔崽baby推特大赛评审团与编辑部共同选出的本季精品内容，涵盖日常记录、人物访谈与城市探索方向。</p>
+      </div>
+      <button class="tb-btn tb-btn--ghost" type="button" data-tb-modal="share">分享本页</button>
+    </div>
+    <div class="tb-focus">
+      <article class="tb-focus__main">
+        <div class="tb-cover">
+          <svg viewBox="0 0 800 450" role="img" aria-label="焦点影片封面：清晨巷口的温热早餐摊与蒸汽">
+            <defs>
+              <linearGradient id="tbF1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b2438"/><stop offset=".5" stop-color="#e14a3d"/><stop offset="1" stop-color="#ffb703"/></linearGradient>
+            </defs>
+            <rect width="800" height="450" fill="url(#tbF1)"/>
+            <circle cx="600" cy="120" r="86" fill="#ffe3b0" opacity=".55"/>
+            <g fill="#241f2b" opacity=".55">
+              <rect x="0" y="330" width="800" height="120"/>
+            </g>
+            <g fill="#fff2d6" opacity=".8">
+              <ellipse cx="240" cy="300" rx="52" ry="16"/>
+              <ellipse cx="240" cy="272" rx="40" ry="13"/>
+              <ellipse cx="240" cy="248" rx="28" ry="10"/>
+            </g>
+            <g stroke="#fff2d6" stroke-width="2" opacity=".5" fill="none">
+              <path d="M196 236c-14-30 12-42 0-70M252 232c-14-30 12-42 0-70"/>
+            </g>
+            <g fill="#fff7f2" font-family="sans-serif" font-weight="800">
+              <text x="52" y="120" font-size="34">清晨五点半</text>
+              <text x="52" y="164" font-size="20" opacity=".85">城市醒来之前的那顿饭</text>
+            </g>
+          </svg>
+          <span class="tb-tag">焦点推荐</span>
+          <span class="tb-play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="#e14a3d"><path d="M8 5l12 7-12 7z"/></svg>
+          </span>
+        </div>
+        <div class="tb-focus__body">
+          <h3>清晨五点半：城市醒来之前的那顿饭</h3>
+          <p>跟拍三位早餐摊主十七天，记录一盏灯如何点亮一条街的温度。第六届「拾光」赛道开幕影片。</p>
+          <div class="tb-meta"><span>出品：兔崽baby影像团队</span><span>片长 12′48″</span><span>2026-11-18 官方发布</span></div>
+        </div>
+      </article>
+      <div class="tb-focus__side">
+        <article class="tb-mini">
+          <div class="tb-cover">
+            <svg viewBox="0 0 320 180" role="img" aria-label="小封面：深夜书桌与一盏台灯下的手写笔记">
+              <rect width="320" height="180" fill="#2b3a55"/>
+              <circle cx="230" cy="60" r="46" fill="#ffd166" opacity=".85"/>
+              <rect x="0" y="130" width="320" height="50" fill="#1e2a3e"/>
+              <g fill="#fff7f2" opacity=".9"><rect x="40" y="108" width="110" height="8" rx="4"/><rect x="40" y="124" width="80" height="8" rx="4"/></g>
+              <path d="M70 130l10-52 26 6-10 52z" fill="#e14a3d"/>
+            </svg>
+            <span class="tb-tag">人物访谈</span>
+          </div>
+          <div class="tb-mini__body">
+            <h4>灯光师老陈：我在片场站了二十年</h4>
+            <span>导演手记 · 8′10″</span>
+          </div>
+        </article>
+        <article class="tb-mini">
+          <div class="tb-cover">
+            <svg viewBox="0 0 320 180" role="img" aria-label="小封面：雨后的老街倒映着霓虹招牌">
+              <rect width="320" height="180" fill="#1f3d3a"/>
+              <g fill="#2ec4a6" opacity=".8"><rect x="20" y="30" width="60" height="16" rx="4"/><rect x="100" y="52" width="46" height="16" rx="4"/><rect x="190" y="26" width="80" height="16" rx="4"/></g>
+              <rect x="0" y="120" width="320" height="60" fill="#0f2321"/>
+              <g stroke="#ffd166" stroke-width="3" opacity=".7"><path d="M40 140h240M40 158h180"/></g>
+            </svg>
+            <span class="tb-tag">城市探索</span>
+          </div>
+          <div class="tb-mini__body">
+            <h4>雨停之后，走完这条老街的三十六家店</h4>
+            <span>城市漫步 · 15′02″</span>
+          </div>
+        </article>
+        <article class="tb-mini">
+          <div class="tb-cover">
+            <svg viewBox="0 0 320 180" role="img" aria-label="小封面：手作木工台上散落的刨花与刻刀">
+              <rect width="320" height="180" fill="#c98a4b"/>
+              <g fill="#8a5a2e"><rect x="0" y="120" width="320" height="60"/></g>
+              <g fill="#f4d3a6"><circle cx="90" cy="96" r="26"/><circle cx="150" cy="86" r="20"/><circle cx="208" cy="100" r="30"/></g>
+              <path d="M60 60l90-18 8 26-90 18z" fill="#3d2a1c"/>
+            </svg>
+            <span class="tb-tag">手作DIY</span>
+          </div>
+          <div class="tb-mini__body">
+            <h4>一块旧木板变成摄影滑轨的七十二小时</h4>
+            <span>幕后制作 · 9′33″</span>
+          </div>
+        </article>
+        <article class="tb-mini">
+          <div class="tb-cover">
+            <svg viewBox="0 0 320 180" role="img" aria-label="小封面：窗边安静趴着的橘色小猫">
+              <rect width="320" height="180" fill="#f6dfc4"/>
+              <circle cx="160" cy="96" r="44" fill="#e8823f"/>
+              <circle cx="146" cy="86" r="5" fill="#3d2a1c"/><circle cx="174" cy="86" r="5" fill="#3d2a1c"/>
+              <path d="M150 106q10 8 20 0" stroke="#3d2a1c" stroke-width="3" fill="none"/>
+              <rect x="0" y="150" width="320" height="30" fill="#d9b389"/>
+            </svg>
+            <span class="tb-tag">治愈影像</span>
+          </div>
+          <div class="tb-mini__body">
+            <h4>和一只猫共处的第八百天</h4>
+            <span>日常记录 · 6′21″</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 视频流 -->
+  <section class="tb-section tb-section--alt" id="stream" aria-labelledby="tbStreamTitle">
+    <div class="tb-wrap">
+      <div class="tb-head-block">
+        <div>
+          <div class="tb-kicker">Community Stream</div>
+          <h2 id="tbStreamTitle">影像社区 · <em>本届参赛作品</em></h2>
+          <p>来自兔崽baby推特大赛参赛者的真实作品，按主题标签筛选，欢迎点赞、收藏与评论交流。</p>
+        </div>
+        <span class="tb-chip is-active" aria-hidden="true">共 9 部精选</span>
+      </div>
+      <div class="tb-filters" role="group" aria-label="主题筛选">
+        <button class="tb-chip is-active" data-tb-filter="all" type="button">全部</button>
+        <button class="tb-chip" data-tb-filter="daily" type="button">日常记录</button>
+        <button class="tb-chip" data-tb-filter="place" type="button">城市探索</button>
+        <button class="tb-chip" data-tb-filter="skill" type="button">教程干货</button>
+        <button class="tb-chip" data-tb-filter="people" type="button">人物访谈</button>
+      </div>
+      <div class="tb-stream" id="tbStream">
+
+        <article class="tb-card" data-tb-cat="daily">
+          <div class="tb-cover">
+            <svg viewBox="0 0 320 180" role="img" aria-label="视频封面：腌菜坛子与晾在竹竿上的布料">
+              <rect width="320" height="180" fill="#b5552f"/>
+              <g fill="#f4d3a6" opacity=".9"><rect x="0" y="120" width="320" height="60"/></g>
+              <g fill="#3d2a1c"><ellipse cx="90" cy="126" rx="42" ry="12"/><ellipse cx="90" cy="100" rx="32" ry="26"/></g>
+              <g fill="#fff2d6"><rect x="170" y="40" width="120" height="10" rx="5"/><rect x="180" y="60" width="90" height="8" rx="4"/></g>
+              <circle cx="250" cy="120" r="26" fill="#ffb703"/>
+            </svg>
+            <span class="tb-tag">日常记录</span>
+            <span class="tb-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="#e14a3d"><path d="M8 5l12 7-12 7z"/></svg></span>
+          </div>
+          <div class="tb-card__body">
+            <h3>阳台上的腌菜坛：我和妈妈的后勤学</h3>
+            <p>把镜头对准家里的两只坛子，拍下一年四季最踏实的颜色。</p>
+            <div class="tb-card__foot">
+              <span class="tb-author"><span class="tb-avatar" style="background:#e14a3d" aria-hidden="true">南</span>南枝记录</span>
+              <div class="tb-actions">
+                <button class="tb-act" type="button" data-tb-like aria-pressed="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20s-7-4.6-7-9.3A4.2 4.2 0 0 1 12 7a4.2 4.2 0 0 1 7 3.7C19 15.4 12 20 12 20z"/></svg><span>238</span>
+                </button>
+                <button class="tb-act" type="button" data-tb-fav aria-pressed="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4h12v17l-6-4-6 4z"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="tb-card" data-tb-cat="place">
+          <div class="tb-cover">
+            <svg viewBox="0 0 320 180" role="img" aria-label="视频封面：夜色中的高架桥与穿行的车灯">
+              <rect width="320" height="180" fill="#141a2e"/>
+              <g fill="#2b3a6e"><rect x="0" y="90" width="320" height="90"/></g>
+              <path d="M0 120Q160 40 320 120" stroke="#7b5cff" stroke-width="6" fill="none" opacity=".8"/>
+              <g stroke="#ffd166" stroke-width="3"><path d="M20 140h60M120 150h70M240 144h60"/></g>
+              <circle cx="60" cy="40" r="18" fill="#ffb703" opacity=".7"/>
+            </svg>
+            <span class="tb-tag">城市探索</span>
+            <span class="tb-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="#e14a3d"><path d="M8 5l12 7-12 7z"/></svg></span>
+          </div>
+          <div class="tb-card__body">
+            <h3>凌晨两点的天桥：给夜班人拍一组肖像</h3>
+            <p>在同一个机位守了三晚，等到十二位下班回家的人。</p>
+            <div class="tb-card__foot">
+              <span class="tb-author"><span class="tb-avatar" style="background:#7b5cff" aria-hidden="true">路</span>路口小队长</span>
+              <div class="tb-actions">
+                <button class="tb-act" type="button" data-tb-like aria-pressed="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20s-7-4.6-7-9.3A4.2 4.2 0 0 1 12 7a4.2 4.2 0 0 1 7 3.7C19 15.4 12 20 12 20z"/></svg><span>412</span>
+                </button>
+                <button class="tb-act" type="button" data-tb-fav aria-pressed="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4h12v17l-6-4-6 4z"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="tb-card" data-tb-cat="skill">
+          <div class="tb-cover">
+            <svg viewBox="0 0 320 180" role="img" aria-label="视频封面：剪辑时间线上的素材块与波形">
+              <rect width="320" height="180" fill="#eef1f7"/>
+              <g fill="#7b5cff"><rect x="24" y="30" width="70" height="28" rx="6"/><rect x="106" y="30" width="120" height="28" rx="6" opacity=".6"/></g>
+              <g fill="#2ec4a6"><rect x="24" y="72" width="140" height="24" rx="6"/><rect x="176" y="72" width="60" height="24" rx="6" opacity=".6"/></g>
+              <g stroke="#241f2b" stroke-width="2" opacity=".4"><path d="M24 120h272M24 136h240"/></g>
+              <path d="M24 156l16-14 16 14 16-14 16 14 16-14 16 14" stroke="#e14a3d" stroke-width="3" fill="none"/>
+            </svg>
+            <span class="tb-tag">教程干货</span>
+            <span class="tb-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="#e14a3d"><path d="M8 5l12 7-12 7z"/></svg></span>
+          </div>
+          <div class="tb-card__body">
+            <h3>五分钟剪出呼吸感：三个节奏剪辑实操</h3>
+            <p>从素材标记到音乐卡点，用手机也能做出的转场层次。</p>
+            <div class="tb-card__foot">
+              <span class="tb-author"><span class="tb-avatar" style="background:#2ec4a6" aria-hidden="true">剪</span>剪辑间老王</span>
+              <div class="tb-actions">
+                <button class="tb-act" type="button" data-tb-like aria-pressed="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20s-7-4.6-7-9.3A4.2 4.2 0 0 1 12 7a4.2 4.2 0 0 1 7 3.7C19 15.4 12 20 12 20z"/></svg><span>596</span>
+                </button>
+                <button class="tb-act" type="button" data-tb-fav aria-pressed="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4h12v17l-6-4-6 4z"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="tb-card" data-tb-cat="people">
+          <div class="tb-cover">
+            <svg viewBox="0 0 320 180" role="img" aria-label="视频封面：访谈现场的沙发、落地灯与话筒">
+              <rect width="320" height="180" fill="#3c2b4d"/>
+              <rect x="0" y="126" width="320" height="54" fill="#241f2b"/>
+              <rect x="40" y="80" width="110" height="52" rx="12" fill="#ff6b5e"/>
+              <rect x="152" y="66" width="16" height="66" rx="8" fill="#ffd166"/>
+              <circle cx="240" cy="66" r="22" fill="#ffd166" opacity=".85"/>
+              <path d="M224 96h32M240 96v30" stroke="#ffd166" stroke-width="4"/>
+            </svg>
+            <span class="tb-tag">人物访谈</span>
+            <span class="tb-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="#e14a3d"><path d="M8 5l12 7-12 7z"/></svg></span>
+          </div>
+          <div class="tb-card__body">
+            <h3>访谈：她把乡村小学的课间十分钟拍成电影</h3>
+            <p>一位支教老师的摄影课，如何改变一个班级的表达方式。</p>
+            <div class="tb-card__foot">
+              <span class="tb-author"><span class="tb-avatar" style="background:#e8823f" aria-hidden="true">林</span>林间拍客</span>
+              <div class="tb-actions">
+                <button class="tb-act" type="button" data-tb-like aria-pressed="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20s-7-4.6-7-9.3A4.2 4.2 0 0 1 12 7a4.2 4.2 0 0 1 7 3.7C19 15.4 12 20 12 20z"/></svg><span>327</span>
+                </button>
+                <button class="tb-act" type="button" data-tb-fav aria-pressed="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4h12v17l-6-4-6 4z"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="tb-card" data-tb-cat="daily">
+          <div class="tb-cover">
+            <svg viewBox="0 0 320 180" role="img" aria-label="视频封面：窗台上的绿植与洒进来的午后阳光">
+              <rect width="320" height="180" fill="#e7f2e4"/>
+              <path d="M0 0h180L60 180H0z" fill="#ffd166" opacity=".45"/>
+              <rect x="0" y="132" width="320" height="48" fill="#c98a4b"/>
+              <g fill="#2ec4a6"><ellipse cx="120" cy="104" rx="26" ry="34"/><ellipse cx="150" cy="92" rx="20" ry="26"/></g>
+              <g fill="#8a5a2e"><rect x="104" y="126" width="52" height="28" rx="6"/></g>
+            </svg>
+            <span class="tb-tag">日常记录</span>
+            <span class="tb-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="#e14a3d"><path d="M8 5l12 7-12 7z"/></svg></span>
+          </div>
+          <div class="tb-card__body">
+            <h3>每天拍一片叶子：一百天的慢镜头实验</h3>
+            <p>固定机位、固定时间，把一整季的生长压缩成四分钟。</p>
+            <div class="tb-card__foot">
+              <span class="tb-author"><span class="tb-avatar" style="background:#2ec4a6" aria-hidden="true">叶</span>叶子慢放</span>
+              <div class="tb-actions">
+                <button class="tb-act" type="button" data-tb-like aria-pressed="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20s-7-4.6-7-9.3A4.2 4.2 0 0 1 12 7a4.2 4.2 0 0 1 7 3.7C19 15.4 12 20 12 20z"/></svg><span>181</span>
+                </button>
+                <button class="tb-act" type="button" data-tb-fav aria-pressed="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4h12v17l-6-4-6 4z"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="tb-card" data-tb-cat="skill">
+          <div class="tb-cover">
+            <svg viewBox="0 0 320 180" role="img" aria-label="视频封面：三脚架、相机与光线方向示意图">
+              <rect width="320" height="180" fill="#1d2333"/>
+              <g stroke="#2ec4a6" stroke-width="3" fill="none"><path d="M160 150l-34-56M160 150l34-56M160 150v-56"/></g>
+              <rect x="132" y="56" width="56" height="38" rx="8" fill="#eef1f7"/>
+              <circle cx="160" cy="75" r="12" fill="#241f2b"/>
+              <g stroke="#ffd166" stroke-width="2" opacity=".8"><path d="M60 40l40 30M250 40l-40 30M60 130l40-30M250 130l-40-30"/></g>
+            </svg>
+            <span class="tb-tag">教程干货</span>
+            <span class="tb-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="#e14a3d"><path d="M8 5l12 7-12 7z"/></svg></span>
+          </div>
+          <div class="tb-card__body">
+            <h3>一个人也能拍夜景：手持布光的三条经验</h3>
+            <p>没有器材也能做出层次，重点是知道光应该从哪里来。</p>
+            <div class="tb-card__foot">
+              <span class="tb-author"><span class="tb-avatar" style="background:#ffb703;color:#241f2b" aria-hidden="true">光</span>光斑工作室</span>
+              <div class="tb-actions">
+                <button class="tb-act" type="button" data-tb-like aria-pressed="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20s-7-4.6-7-9.3A4.2 4.2 0 0 1 12 7a4.2 4.2 0 0 1 7 3.7C19 15.4 12 20 12 20z"/></svg><span>874</span>
+                </button>
+                <button class="tb-act" type="button" data-tb-fav aria-pressed="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4h12v17l-6-4-6 4z"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="tb-card" data-tb-cat="place">
+          <div class="tb-cover">
+            <svg viewBox="0 0 320 180" role="img" aria-label="视频封面：海边落日下骑行的人影与长影子">
+              <rect width="320" height="180" fill="#ffb26b"/>
+              <circle cx="240" cy="70" r="34" fill="#fff0c9"/>
+              <rect x="0" y="120" width="320" height="60" fill="#e8823f"/>
+              <g stroke="#3d2a1c" stroke-width="4" fill="none"><circle cx="110" cy="130" r="14"/><circle cx="150" cy="130" r="14"/><path d="M110 130l20-24h22l-22 24z"/></g>
+              <path d="M0 152Q160 120 320 152" stroke="#fff0c9" stroke-width="3" fill="none" opacity=".7"/>
+            </svg>
+            <span class="tb-tag">城市探索</span>
+            <span class="tb-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="#e14a3d"><path d="M8 5l12 7-12 7z"/></svg></span>
+          </div>
+          <div class="tb-card__body">
+            <h3>沿江骑行四十公里：镜头里的七个黄昏</h3>
+            <p>同一段江岸，七天不同的天光，记录下来是给自己的礼物。</p>
+            <div class="tb-card__foot">
+              <span class="tb-author"><span class="tb-avatar" style="background:#3c2b4d" aria-hidden="true">舟</span>小舟向西</span>
+              <div class="tb-actions">
+                <button class="tb-act" type="button" data-tb-like aria-pressed="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20s-7-4.6-7-9.3A4.2 4.2 0 0 1 12 7a4.2 4.2 0 0 1 7 3.7C19 15.4 12 20 12 20z"/></svg><span>265</span>
+                </button>
+                <button class="tb-act" type="button" data-tb-fav aria-pressed="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4h12v17l-6-4-6 4z"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="tb-card" data-tb-cat="people">
+          <div class="tb-cover">
+            <svg viewBox="0 0 320 180" role="img" aria-label="视频封面：老式收音机与被翻旧的磁带盒">
+              <rect width="320" height="180" fill="#7a4a2b"/>
+              <rect x="40" y="60" width="150" height="80" rx="10" fill="#3d2a1c"/>
+              <circle cx="86" cy="100" r="20" fill="#c98a4b"/>
+              <circle cx="140" cy="100" r="20" fill="#c98a4b"/>
+              <g fill="#f4d3a6"><rect x="210" y="70" width="80" height="54" rx="6"/></g>
+              <g stroke="#3d2a1c" stroke-width="3"><path d="M222 88h56M222 100h56"/></g>
+            </svg>
+            <span class="tb-tag">人物访谈</span>
+            <span class="tb-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="#e14a3d"><path d="M8 5l12 7-12 7z"/></svg></span>
+          </div>
+          <div class="tb-card__body">
+            <h3>开了二十年的录音店，和它的最后一批顾客</h3>
+            <p>一段关于声音的访谈，记录一间小店与一条街的告别。</p>
+            <div class="tb-card__foot">
+              <span class="tb-author"><span class="tb-avatar" style="background:#8a5a2e" aria-hidden="true">声</span>声音档案</span>
+              <div class="tb-actions">
+                <button class="tb-act" type="button" data-tb-like aria-pressed="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20s-7-4.6-7-9.3A4.2 4.2 0 0 1 12 7a4.2 4.2 0 0 1 7 3.7C19 15.4 12 20 12 20z"/></svg><span>503</span>
+                </button>
+                <button class="tb-act" type="button" data-tb-fav aria-pressed="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4h12v17l-6-4-6 4z"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="tb-card" data-tb-cat="skill">
+          <div class="tb-cover">
+            <svg viewBox="0 0 320 180" role="img" aria-label="视频封面：分镜脚本手稿与彩色便签">
+              <rect width="320" height="180" fill="#f7f2ec"/>
+              <g stroke="#241f2b" stroke-width="2" opacity=".35"><path d="M30 40h260M30 70h260M30 100h260M30 130h200"/></g>
+              <g fill="#ff6b5e"><rect x="46" y="48" width="48" height="16" rx="4"/><rect x="120" y="78" width="64" height="16" rx="4"/></g>
+              <g fill="#7b5cff"><rect x="200" y="48" width="56" height="16" rx="4"/><rect x="70" y="108" width="80" height="16" rx="4"/></g>
+              <g fill="#ffd166"><rect x="46" y="80" width="40" height="16" rx="4"/><rect x="220" y="108" width="66" height="16" rx="4"/></g>
+            </svg>
+            <span class="tb-tag">教程干货</span>
+            <span class="tb-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="#e14a3d"><path d="M8 5l12 7-12 7z"/></svg></span>
+          </div>
+          <div class="tb-card__body">
+            <h3>从一句话到一支片：分镜脚本的四步法</h3>
+            <p>把灵感拆成镜头，把镜头排成情绪，附可直接套用的模板。</p>
+            <div class="tb-card__foot">
+              <span class="tb-author"><span class="tb-avatar" style="background:#e14a3d" aria-hidden="true">本</span>脚本练习生</span>
+              <div class="tb-actions">
+                <button class="tb-act" type="button" data-tb-like aria-pressed="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20s-7-4.6-7-9.3A4.2 4.2 0 0 1 12 7a4.2 4.2 0 0 1 7 3.7C19 15.4 12 20 12 20z"/></svg><span>688</span>
+                </button>
+                <button class="tb-act" type="button" data-tb-fav aria-pressed="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4h12v17l-6-4-6 4z"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 专题 -->
+  <section class="tb-section tb-wrap" id="topics" aria-labelledby="tbTopicTitle">
+    <div class="tb-head-block">
+      <div>
+        <div class="tb-kicker">Festival Programs</div>
+        <h2 id="tbTopicTitle">赛事专题 · <em>四条赛道</em></h2>
+        <p>第六届兔崽baby推特大赛围绕“拾光”设置四条主题赛道，每条赛道均有独立的评审标准与展映安排。</p>
+      </div>
+      <button class="tb-btn tb-btn--solid" type="button" data-tb-modal="submit">报名参赛</button>
+    </div>
+    <div class="tb-topics">
+      <article class="tb-topic">
+        <div class="tb-cover">
+          <svg viewBox="0 0 400 300" role="img" aria-label="专题封面：晨光中的窗与一杯冒热气的茶">
+            <rect width="400" height="300" fill="#e8823f"/>
+            <rect x="60" y="40" width="130" height="150" rx="10" fill="#fff0c9"/>
+            <path d="M60 40h130v150H60z" fill="#ffd166" opacity=".5"/>
+            <ellipse cx="290" cy="180" rx="46" ry="18" fill="#3d2a1c"/>
+            <path d="M270 168c-12-24 12-36 0-58M306 166c-12-24 12-36 0-58" stroke="#fff0c9" stroke-width="4" fill="none"/>
+          </svg>
+        </div>
+        <h3>拾光 · 日常</h3>
+        <p>记录平凡生活里的微光时刻，注重真实与细节，时长 3–10 分钟。</p>
+        <span class="tb-topic__status">征集中 · 12 月 8 日截止</span>
+      </article>
+      <article class="tb-topic">
+        <div class="tb-cover">
+          <svg viewBox="0 0 400 300" role="img" aria-label="专题封面：城市楼宇之间穿行的人群剪影">
+            <rect width="400" height="300" fill="#1d2a3e"/>
+            <g fill="#2b3a6e"><rect x="20" y="90" width="70" height="210"/><rect x="110" y="50" width="60" height="250"/><rect x="200" y="120" width="80" height="180"/><rect x="300" y="70" width="70" height="230"/></g>
+            <g fill="#ffb703" opacity=".8"><rect x="36" y="112" width="12" height="12"/><rect x="60" y="146" width="12" height="12"/><rect x="126" y="80" width="12" height="12"/><rect x="222" y="150" width="12" height="12"/><rect x="320" y="96" width="12" height="12"/></g>
+            <g fill="#fff0c9" opacity=".8"><circle cx="150" cy="240" r="9"/><circle cx="180" cy="250" r="9"/><circle cx="210" cy="238" r="9"/></g>
+          </svg>
+        </div>
+        <h3>拾光 · 城市</h3>
+        <p>以一座城市为对象，用影像回答“这里的人如何生活”。</p>
+        <span class="tb-topic__status">征集中 · 12 月 15 日截止</span>
+      </article>
+      <article class="tb-topic">
+        <div class="tb-cover">
+          <svg viewBox="0 0 400 300" role="img" aria-label="专题封面：访谈现场的麦克风与两把椅子">
+            <rect width="400" height="300" fill="#7b5cff"/>
+            <rect x="0" y="220" width="400" height="80" fill="#3c2b4d"/>
+            <g fill="#ffd166"><rect x="80" y="140" width="70" height="80" rx="10"/><rect x="250" y="140" width="70" height="80" rx="10"/></g>
+            <g fill="#fff7f2"><rect x="196" y="80" width="10" height="90" rx="5"/><ellipse cx="201" cy="76" rx="22" ry="26"/></g>
+          </svg>
+        </div>
+        <h3>拾光 · 人物</h3>
+        <p>访谈式纪录短片，把镜头留给那些默默做事的人。</p>
+        <span class="tb-topic__status">征集中 · 12 月 20 日截止</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- 创作者 -->
+  <section class="tb-section tb-section--alt" id="creators" aria-labelledby="tbCreatorTitle">
+    <div class="tb-wrap">
+      <div class="tb-head-block">
+        <div>
+          <div class="tb-kicker">Creators</div>
+          <h2 id="tbCreatorTitle">创作者矩阵 · <em>持续共建内容生态</em></h2>
+          <p>他们来自不同城市与职业，却共同相信影像可以把普通日子照亮。点击头像可查看创作者档案。</p>
+        </div>
+      </div>
+      <div class="tb-creators">
+        <article class="tb-creator">
+          <span class="tb-avatar" style="background:#e14a3d" data-tb-author="南枝记录" role="button" tabindex="0" aria-label="查看创作者南枝记录的档案">南</span>
+          <h3>南枝记录</h3>
+          <small>日常记录 · 家庭影像</small>
+          <p>用固定机位拍家里的一年四季，擅长把琐碎剪成温柔。</p>
+          <div class="tb-creator__nums"><span><b>42</b>作品</span><span><b>3.1万</b>关注</span></div>
+        </article>
+        <article class="tb-creator">
+          <span class="tb-avatar" style="background:#7b5cff" data-tb-author="路口小队长" role="button" tabindex="0" aria-label="查看创作者路口小队长的档案">路</span>
+          <h3>路口小队长</h3>
+          <small>城市探索 · 街头肖像</small>
+          <p>长期蹲守城市夜班现场，记录被忽略的时间与人。</p>
+          <div class="tb-creator__nums"><span><b>57</b>作品</span><span><b>5.6万</b>关注</span></div>
+        </article>
+        <article class="tb-creator">
+          <span class="tb-avatar" style="background:#2ec4a6" data-tb-author="剪辑间老王" role="button" tabindex="0" aria-label="查看创作者剪辑间老王的档案">剪</span>
+          <h3>剪辑间老王</h3>
+          <small>教程干货 · 后期制作</small>
+          <p>十二年后期从业者，把复杂技术讲成能立刻上手的方法。</p>
+          <div class="tb-creator__nums"><span><b>88</b>作品</span><span><b>9.2万</b>关注</span></div>
+        </article>
+        <article class="tb-creator">
+          <span class="tb-avatar" style="background:#e8823f" data-tb-author="林间拍客" role="button" tabindex="0" aria-label="查看创作者林间拍客的档案">林</span>
+          <h3>林间拍客</h3>
+          <small>人物访谈 · 乡村教育</small>
+          <p>支教第七年，带着学生一起拍短片，也拍他们自己。</p>
+          <div class="tb-creator__nums"><span><b>29</b>作品</span><span><b>2.4万</b>关注</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 影像墙 + 故事 -->
+  <section class="tb-section tb-wrap" id="story" aria-labelledby="tbStoryTitle">
+    <div class="tb-head-block">
+      <div>
+        <div class="tb-kicker">Image Wall & Stories</div>
+        <h2 id="tbStoryTitle">作品墙与创作随笔 · <em>品牌故事</em></h2>
+        <p>影像之外，也有一些安静的记录。兔崽baby推特大赛鼓励创作者把拍摄背后的思考一并留下。</p>
+      </div>
+      <button class="tb-btn tb-btn--ghost" type="button" data-tb-modal="report">反馈建议</button>
+    </div>
+    <div class="tb-wall">
+      <figure>
+        <div class="tb-cover">
+          <svg viewBox="0 0 400 400" role="img" aria-label="作品墙大图：清晨的菜市场与挑担的人">
+            <rect width="400" height="400" fill="#c98a4b"/>
+            <rect x="0" y="280" width="400" height="120" fill="#8a5a2e"/>
+            <g fill="#ffd166"><ellipse cx="90" cy="270" rx="40" ry="16"/><ellipse cx="180" cy="276" rx="34" ry="14"/></g>
+            <g fill="#2ec4a6"><ellipse cx="280" cy="272" rx="44" ry="17"/></g>
+            <g fill="#3d2a1c"><rect x="60" y="180" width="10" height="90"/><rect x="280" y="176" width="10" height="94"/></g>
+            <circle cx="330" cy="90" r="46" fill="#fff0c9" opacity=".8"/>
+          </svg>
+        </div>
+        <figcaption>菜市场南侧的清晨</figcaption>
+      </figure>
+      <figure>
+        <div class="tb-cover">
+          <svg viewBox="0 0 300 300" role="img" aria-label="作品墙图：窗前的缝纫机与线轴">
+            <rect width="300" height="300" fill="#f6dfc4"/>
+            <rect x="50" y="170" width="200" height="60" rx="10" fill="#3d2a1c"/>
+            <rect x="120" y="130" width="60" height="46" rx="8" fill="#e14a3d"/>
+            <g fill="#2ec4a6"><circle cx="80" cy="196" r="10"/><circle cx="240" cy="150" r="8"/></g>
+          </svg>
+        </div>
+        <figcaption>外婆的缝纫机</figcaption>
+      </figure>
+      <figure>
+        <div class="tb-cover">
+          <svg viewBox="0 0 300 300" role="img" aria-label="作品墙图：雨滴落在玻璃上的虚焦光点">
+            <rect width="300" height="300" fill="#1f3d3a"/>
+            <g fill="#7b5cff" opacity=".8"><circle cx="70" cy="90" r="16"/><circle cx="160" cy="60" r="10"/><circle cx="230" cy="120" r="20"/><circle cx="120" cy="200" r="14"/><circle cx="220" cy="230" r="18"/></g>
+          </svg>
+        </div>
+        <figcaption>雨后车窗</figcaption>
+      </figure>
+      <figure>
+        <div class="tb-cover">
+          <svg viewBox="0 0 300 400" role="img" aria-label="作品墙竖图：地铁车厢里低头看手机的人们">
+            <rect width="300" height="400" fill="#2b3a55"/>
+            <rect x="0" y="260" width="300" height="140" fill="#1e2a3e"/>
+            <g fill="#fff0c9" opacity=".85"><circle cx="70" cy="200" r="18"/><circle cx="150" cy="186" r="20"/><circle cx="230" cy="200" r="18"/></g>
+            <g stroke="#ffb703" stroke-width="3"><path d="M20 300h260"/></g>
+          </svg>
+        </div>
+        <figcaption>末班地铁</figcaption>
+      </figure>
+      <figure>
+        <div class="tb-cover">
+          <svg viewBox="0 0 300 300" role="img" aria-label="作品墙图：田埂上骑车的孩子与金色稻田">
+            <rect width="300" height="300" fill="#ffb703"/>
+            <rect x="0" y="200" width="300" height="100" fill="#c98a4b"/>
+            <g stroke="#3d2a1c" stroke-width="4" fill="none"><circle cx="110" cy="220" r="16"/><circle cx="150" cy="220" r="16"/><path d="M110 220l20-26h22l-22 26z"/></g>
+            <circle cx="240" cy="80" r="34" fill="#fff0c9"/>
+          </svg>
+        </div>
+        <figcaption>稻田里的自行车</figcaption>
+      </figure>
+      <figure>
+        <div class="tb-cover">
+          <svg viewBox="0 0 400 220" role="img" aria-label="作品墙横图：夜晚亮着灯的窗户与楼下的路灯">
+            <rect width="400" height="220" fill="#141a2e"/>
+            <g fill="#2b3a6e"><rect x="20" y="40" width="90" height="180"/><rect x="130" y="70" width="80" height="150"/><rect x="240" y="30" width="110" height="190"/></g>
+            <g fill="#ffd166"><rect x="40" y="60" width="16" height="16"/><rect x="70" y="100" width="16" height="16"/><rect x="150" y="90" width="16" height="16"/><rect x="270" y="60" width="16" height="16"/><rect x="310" y="120" width="16" height="16"/></g>
+          </svg>
+        </div>
+        <figcaption>谁的窗户还亮着</figcaption>
+      </figure>
+    </div>
+
+    <div class="tb-quotes" style="margin-top:34px;">
+      <blockquote class="tb-quote">
+        <p>第一次把家里的腌菜坛拍成短片，没想到会被选进焦点。平台给的建议很具体，改完真的不一样。</p>
+        <footer><span class="tb-avatar" style="background:#e14a3d;width:24px;height:24px;font-size:11px" aria-hidden="true">南</span>南枝记录</footer>
+      </blockquote>
+      <blockquote class="tb-quote">
+        <p>剪辑课看完了三遍，老王把节奏讲得很清楚。我这种零基础的也能剪出成片，非常感谢。</p>
+        <footer><span class="tb-avatar" style="background:#2ec4a6;width:24px;height:24px;font-size:11px" aria-hidden="true">小</span>小满同学</footer>
+      </blockquote>
+      <blockquote class="tb-quote">
+        <p>评审意见写得比奖状值钱。去年落选之后按建议重拍，今年进了展映，这就是持续运营的意义。</p>
+        <footer><span class="tb-avatar" style="background:#7b5cff;width:24px;height:24px;font-size:11px" aria-hidden="true">阿</span>阿川的镜头</footer>
+      </blockquote>
+      <blockquote class="tb-quote">
+        <p>在这个社区最大的感受是安静，没有人催更，大家都在认真拍自己想拍的东西。</p>
+        <footer><span class="tb-avatar" style="background:#ffb703;color:#241f2b;width:24px;height:24px;font-size:11px" aria-hidden="true">树</span>树下看片</footer>
+      </blockquote>
+      <blockquote class="tb-quote">
+        <p>投稿流程比想象中简单，上传、填写创作说明、等评审回复，全程都有邮件提醒。</p>
+        <footer><span class="tb-avatar" style="background:#e8823f;width:24px;height:24px;font-size:11px" aria-hidden="true">周</span>周末导演</footer>
+      </blockquote>
+      <blockquote class="tb-quote">
+        <p>线下展映那场印象最深，散场后大家在门口聊了快一个小时，这才是社区该有的样子。</p>
+        <footer><span class="tb-avatar" style="background:#2b3a55;width:24px;height:24px;font-size:11px" aria-hidden="true">叶</span>叶子慢放</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- 深度解析 -->
+  <section class="tb-section tb-wrap" aria-labelledby="tbDeepTitle">
+    <div class="tb-longform">
+      <div class="tb-kicker">Brand Insight</div>
+      <h2 id="tbDeepTitle">关于兔崽baby推特大赛：一个持续生长的影像内容品牌</h2>
+      <p>兔崽baby推特大赛并不是一次性的比赛活动，而是一个已经持续运营多届的影像内容品牌。它的起点很小：几位喜欢拍短片的年轻人想在周末找些同好，于是约定每人交一支三分钟的作品，互相看一看、聊一聊。第一届只有十几个人参加，放映场地是一间借来的会议室。但那次放映之后，大家发现真正稀缺的不是设备，也不是技巧，而是一个愿意认真看完你作品、并给出具体意见的地方。这个判断，后来成为品牌长期坚持的方向——<strong>把评价做成陪伴，把比赛做成社区</strong>。</p>
+      <p>经过几届积累，兔崽baby推特大赛逐步形成了较为稳定的内容结构：以主题赛道征集作品，以评审与编辑部共同选出焦点内容，以创作者档案沉淀长期关系，以线下展映与线上社区维持日常活跃。官方网站作为这一结构的中枢，承担官方发布、赛事报名、作品收录、攻略说明与创作者服务等职能。我们希望它既像一个有秩序的品牌门户，也像一个随时可以推门进来的社区。任何一位初次投稿的人，都能在这里找到投稿说明、评审标准、往届精品内容与真实的创作者经验分享。</p>
+      <h3>我们如何判断一支作品</h3>
+      <p>评审维度包括四个部分：表达是否真诚、结构是否清晰、影像是否成立、细节是否动人。我们并不要求高成本制作，也不以设备参数作为门槛。在过往入选作品中，有相当比例是用手机拍摄的日常记录，它们共同的特点是：作者清楚地知道自己想记录什么。相比之下，一个漂亮但空洞的镜头组合，往往在初审阶段就会停下。我们更看重作者与拍摄对象之间的关系，那种关系会从镜头里透出来，任何后期都无法替代。</p>
+      <blockquote>好的影像不一定要回答宏大的问题，它可以只是把一件小事拍得足够认真。</blockquote>
+      <h3>内容生态与创作者扶持</h3>
+      <p>兔崽baby推特大赛的创作者扶持计划包括三部分：一是评审反馈，每位投稿者都会收到至少一条具体建议；二是展映机会，入选作品会在城市合作空间进行线下放映，并配有导演交流；三是内容合作，优秀创作者可参与品牌联合拍摄项目，获得制作资源与传播支持。我们坚持正版授权与清晰署名，所有收录作品均需作者确认授权范围，平台不会在未告知的情况下二次使用任何素材。这条原则看似基础，却是内容生态能够长期运转的前提。</p>
+      <h3>为什么坚持“垂直”与“小而稳”</h3>
+      <p>在内容供给极度充裕的今天，一个影像品牌要建立口碑，靠的不是数量，而是可预期的品质。我们选择深耕垂直领域，把精力集中在真实生活影像这一条线上，不追逐短期热点，也不做与定位无关的扩张。每届赛事的主题都来自对创作者日常的观察，而非凭空设定。我们也因此建立了较为稳定的用户结构：既有连续参加多届的老作者，也有刚拿起相机的新人，他们在同一个社区里互相看见，构成了平台最珍贵的部分。</p>
+      <p>作为品牌方，我们清楚自己的能力边界。我们不承诺让谁一夜被看见，但可以承诺每一次投稿都会被认真看完，每一条建议都来自真实的观看经验。官方网站会持续更新赛事动态、评审名单、展映排期与创作者故事，也会如实公布每一届的收录数据。这种透明，是我们对“值得信赖”这四个字最朴素的解释。</p>
+      <h3>给第一次投稿的人</h3>
+      <p>如果你正在犹豫要不要投稿，我们的建议是先拍起来。不用等设备齐全，不用等故事完美，从你每天经过的那条路、常去的那家店、熟悉的那个人开始。时长控制在十分钟以内，尽量保证收音清楚，注意画面稳定，然后在创作说明里写清楚你为什么要拍它。剩下的，交给评审与时间。兔崽baby推特大赛的每一届都会有第一次投稿的人，他们中的很多人后来成了社区里最活跃的创作者，这也是这个品牌最有说服力的成长轨迹。</p>
+    </div>
+  </section>
+
+  <!-- 动态 + 合作 -->
+  <section class="tb-section tb-section--alt" id="news" aria-labelledby="tbNewsTitle">
+    <div class="tb-wrap">
+      <div class="tb-head-block">
+        <div>
+          <div class="tb-kicker">Updates</div>
+          <h2 id="tbNewsTitle">企业动态 · <em>官方发布</em></h2>
+          <p>赛事进展、评审安排与品牌合作信息，均在此处统一发布。</p>
+        </div>
+      </div>
+      <div class="tb-two">
+        <div class="tb-timeline">
+          <ul>
+            <li>
+              <time datetime="2026-11-18">2026-11-18</time>
+              <h3>第六届「拾光」主题赛道正式开放报名</h3>
+              <p>四条赛道同步开启，报名与作品上传通道于今日 10:00 上线，首日收到投稿 217 份。</p>
+            </li>
+            <li>
+              <time datetime="2026-11-16">2026-11-16</time>
+              <h3>创作者扶持计划新增 30 个名额</h3>
+              <p>本届扶持计划扩容，入选者可获得评审一对一反馈与联合拍摄机会。</p>
+            </li>
+            <li>
+              <time datetime="2026-11-12">2026-11-12</time>
+              <h3>往届精品内容专区上线</h3>
+              <p>收录五届共 128 部原创短片，按主题与年份整理，支持站内检索。</p>
+            </li>
+            <li>
+              <time datetime="2026-11-06">2026-11-06</time>
+              <h3>九城线下展映排期公布</h3>
+              <p>首批展映城市与合作空间名单确认，具体场次将陆续在官网更新。</p>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="font-size:15px;font-weight:800;margin-bottom:14px;letter-spacing:.05em;">合作品牌与伙伴</h3>
+          <div class="tb-partners">
+            <div class="tb-partner"><i style="background:#e14a3d" aria-hidden="true">光</i>光斑影像器材</div>
+            <div class="tb-partner"><i style="background:#7b5cff" aria-hidden="true">城</i>城市放映计划</div>
+            <div class="tb-partner"><i style="background:#2ec4a6" aria-hidden="true">纸</i>纸间独立书店</div>
+            <div class="tb-partner"><i style="background:#ffb703;color:#241f2b" aria-hidden="true">声</i>声音档案工作室</div>
+            <div class="tb-partner"><i style="background:#3c2b4d" aria-hidden="true">行</i>行者户外</div>
+            <div class="tb-partner"><i style="background:#e8823f" aria-hidden="true">麦</i>麦田助学基金</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ + 联系 -->
+  <section class="tb-section tb-wrap" id="faq" aria-labelledby="tbFaqTitle">
+    <div class="tb-head-block">
+      <div>
+        <div class="tb-kicker">Help & Contact</div>
+        <h2 id="tbFaqTitle">帮助中心 · <em>投稿与常见问题</em></h2>
+        <p>关于报名、评审、授权与展映的常见问题，先在这里看看。</p>
+      </div>
+    </div>
+    <div class="tb-faq">
+      <details open>
+        <summary>参赛需要什么条件？个人可以报名吗？</summary>
+        <p>不限年龄与职业，个人、团队均可报名。作品需为原创，且作者拥有完整著作权或已获得必要授权。团队作品请指定一位主联系人。</p>
+      </details>
+      <details>
+        <summary>作品时长与格式有什么要求？</summary>
+        <p>建议时长 3–15 分钟，分辨率不低于 1080P，格式为 MP4 或 MOV。投稿时请同时提交不少于 200 字的创作说明，说明拍摄缘起与制作过程。</p>
+      </details>
+      <details>
+        <summary>评审标准是什么？会给出反馈吗？</summary>
+        <p>评审从表达真诚度、结构清晰度、影像完成度与细节感染力四个维度综合评估。每位投稿者均会收到至少一条来自评审的具体建议。</p>
+      </details>
+      <details>
+        <summary>作品授权范围如何界定？</summary>
+        <p>作者保留作品著作权。平台仅在作者确认的范围内用于赛事展映、官方网站展示与相关宣传，不做商业二次开发。具体条款会在投稿页面完整列明。</p>
+      </details>
+      <details>
+        <summary>入选后有哪些权益？</summary>
+        <p>入选作品将进入官方收录专区，获得线下展映与导演交流机会，并有机会参与品牌联合拍摄项目。优秀创作者可获得扶持计划名额。</p>
+      </details>
+      <details>
+        <summary>如何获取展映与活动信息？</summary>
+        <p>所有场次均在官方网站「企业动态」栏目更新，也可通过页面底部的联系邮箱订阅赛事简报。</p>
+      </details>
+      <details>
+        <summary>可以同时投递多条赛道吗？</summary>
+        <p>可以。同一作者最多投递三个作品，不同赛道分别评审。同一作品不可重复投递至多个赛道。</p>
+      </details>
+    </div>
+
+    <div class="tb-contact" style="margin-top:44px;">
+      <div>
+        <h2>与兔崽baby推特大赛保持联系</h2>
+        <p>投稿咨询、合作洽谈、媒体联络与展映申请，欢迎通过以下方式联系我们。工作日内一般会在两个工作日内回复。</p>
+        <button class="tb-btn tb-btn--solid" type="button" data-tb-modal="submit">前往投稿入口</button>
+      </div>
+      <div class="tb-contact__box">
+        <div><span>投稿与咨询邮箱</span><b>hello@tuzai-baby.film</b></div>
+        <div><span>品牌合作</span><b>brand@tuzai-baby.film</b></div>
+        <div><span>办公地址</span><b>影像创作中心 · 三层</b></div>
+        <div><span>接待时间</span><b>周一至周五 10:00–18:00</b></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="tb-foot">
+  <div class="tb-wrap">
+    <div class="tb-foot__grid">
+      <div>
+        <div class="tb-foot__brand"><span class="tb-logo__mark" aria-hidden="true" style="width:34px;height:34px;font-size:15px;">兔</span>兔崽baby推特大赛</div>
+        <p>兔崽baby推特大赛官方网站，由兔崽baby影像团队持续运营的原创影像品牌与创作者社区。坚持正版、高清、专业的选片标准，深耕真实生活影像，致力于搭建有品质、有口碑的内容生态。</p>
+      </div>
+      <div>
+        <h3>站内导航</h3>
+        <ul>
+          <li><a href="#focus">焦点内容</a></li>
+          <li><a href="#stream">影像社区</a></li>
+          <li><a href="#topics">赛事专题</a></li>
+          <li><a href="#creators">创作者矩阵</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>关于品牌</h3>
+        <ul>
+          <li><a href="#story">品牌故事</a></li>
+          <li><a href="#news">企业动态</a></li>
+          <li><a href="#faq">帮助中心</a></li>
+          <li><a href="#topics">报名参赛</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>官方发布</h3>
+        <ul>
+          <li>赛事公告：每周三更新</li>
+          <li>作品收录：随评审同步</li>
+          <li>展映信息：按城市排期</li>
+          <li>投稿通道：全年开放</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tb-foot__bottom">
+      <span>© 2026 兔崽baby推特大赛 官方网站 · 版权所有</span>
+      <span>内容均为原创或经作者授权发布 · 转载请联系官方邮箱</span>
+    </div>
+  </div>
+</footer>
+
+<div class="tb-toast" id="tbToast" role="status" aria-live="polite"></div>
+<button class="tb-top" id="tbTop" type="button" aria-label="回到页面顶部">
+  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#241f2b" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<div class="tb-modal" id="tbModal" role="dialog" aria-modal="true" aria-labelledby="tbModalTitle">
+  <div class="tb-modal__panel">
+    <button class="tb-modal__close" id="tbModalClose" type="button" aria-label="关闭弹窗">×</button>
+    <h3 id="tbModalTitle">投稿与报名</h3>
+    <p id="tbModalDesc">填写以下信息，我们会在两个工作日内与你联系。此表单为页面演示，不会真实提交数据。</p>
+    <div id="tbModalBody"></div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;">
+      <button class="tb-btn tb-btn--ghost" type="button" id="tbModalCancel">取消</button>
+      <button class="tb-btn tb-btn--solid" type="button" id="tbModalOk">确认</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var toastEl = document.getElementById('tbToast');
+  var toastTimer = null;
+  function toast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add('is-show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toastEl.classList.remove('is-show'); }, 2400);
+  }
+
+  /* 移动端导航 */
+  var burger = document.getElementById('tbBurger');
+  var nav = document.getElementById('tbNav');
+  burger.addEventListener('click', function(){
+    var open = nav.classList.toggle('is-open');
+    burger.classList.toggle('is-open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.addEventListener('click', function(e){
+    if(e.target.tagName === 'A'){
+      nav.classList.remove('is-open');
+      burger.classList.remove('is-open');
+      burger.setAttribute('aria-expanded','false');
+    }
+  });
+
+  /* 搜索反馈 */
+  var input = document.getElementById('tbSearchInput');
+  var tip = document.getElementById('tbSearchTip');
+  var pool = [
+    '拾光 · 日常 赛道征集中',
+    '《清晨五点半》焦点影片',
+    '创作者：剪辑间老王',
+    '投稿攻略：分镜脚本四步法',
+    '第六届赛事评审名单',
+    '往届精品内容专区',
+    '九城线下展映排期',
+    '作品墙：菜市场南侧的清晨'
+  ];
+  function doSearch(){
+    var kw = input.value.trim();
+    if(!kw){
+      tip.classList.remove('is-show');
+      return;
+    }
+    var hit = pool.filter(function(x){ return x.indexOf(kw) > -1; });
+    tip.classList.add('is-show');
+    if(hit.length){
+      tip.innerHTML = '找到 <strong>' + hit.length + '</strong> 条相关内容：' + hit.slice(0,3).join(' · ');
+    }else{
+      tip.innerHTML = '暂未找到与「' + kw.replace(/[<>]/g,'') + '」直接相关的内容，试试“拾光”“教程”“展映”。';
+    }
+  }
+  input.addEventListener('input', doSearch);
+  input.addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){ e.preventDefault(); doSearch(); }
+  });
+
+  /* 标签筛选 */
+  var chips = document.querySelectorAll('[data-tb-filter]');
+  var cards = document.querySelectorAll('#tbStream [data-tb-cat]');
+  chips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      chips.forEach(function(c){ c.classList.remove('is-active'); });
+      chip.classList.add('is-active');
+      var f = chip.getAttribute('data-tb-filter');
+      var shown = 0;
+      cards.forEach(function(card){
+        var ok = (f === 'all') || (card.getAttribute('data-tb-cat') === f);
+        card.style.display = ok ? '' : 'none';
+        if(ok) shown++;
+      });
+      toast('已筛选：' + chip.textContent + '，共 ' + shown + ' 部作品');
+    });
+  });
+
+  /* 点赞 / 收藏 */
+  function parseNum(txt){
+    var n = parseFloat(txt);
+    return isNaN(n) ? 0 : n;
+  }
+  document.querySelectorAll('[data-tb-like]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var span = btn.querySelector('span');
+      var on = btn.classList.toggle('is-on');
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      if(span){
+        var n = parseNum(span.textContent);
+        span.textContent = on ? (n + 1) : Math.max(0, n - 1);
+      }
+      toast(on ? '已点赞，感谢支持创作者' : '已取消点赞');
+    });
+  });
+  document.querySelectorAll('[data-tb-fav]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var on = btn.classList.toggle('is-on');
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      var svg = btn.querySelector('svg');
+      if(svg){ svg.setAttribute('fill', on ? 'currentColor' : 'none'); }
+      toast(on ? '已收藏到我的片单' : '已取消收藏');
+    });
+  });
+
+  /* 创作者档案 */
+  var authorInfo = {
+    '南枝记录': '南枝记录，家庭影像创作者，擅长以固定机位记录日常。连续参加四届兔崽baby推特大赛，作品《阳台上的腌菜坛》入选本届焦点推荐。',
+    '路口小队长': '路口小队长，城市街头纪录者，长期拍摄夜班人群与城市边缘空间。累计投稿 57 部，本届带来《凌晨两点的天桥》。',
+    '剪辑间老王': '剪辑间老王，十二年后期从业者，兔崽baby推特大赛特约讲师，负责教程干货方向内容，主讲节奏剪辑与分镜拆解。',
+    '林间拍客': '林间拍客，支教第七年的老师，带学生一起拍短片。作品关注乡村教育与儿童表达，本届参与「拾光 · 人物」赛道。'
+  };
+  document.querySelectorAll('[data-tb-author]').forEach(function(el){
+    function openAuthor(){
+      var name = el.getAttribute('data-tb-author');
+      openModal('创作者档案 · ' + name, authorInfo[name] || '这位创作者暂时还没有公开档案。', 'author');
+    }
+    el.addEventListener('click', openAuthor);
+    el.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openAuthor(); }
+    });
+  });
+
+  /* 弹窗 */
+  var modal = document.getElementById('tbModal');
+  var modalTitle = document.getElementById('tbModalTitle');
+  var modalDesc = document.getElementById('tbModalDesc');
+  var modalBody = document.getElementById('tbModalBody');
+  var modalOk = document.getElementById('tbModalOk');
+  var currentType = 'submit';
+
+  var bodies = {
+    submit: '<input type="text" placeholder="你的称呼或创作者昵称" aria-label="称呼">' +
+            '<input type="text" placeholder="作品名称 / 拟投稿赛道" aria-label="作品名称">' +
+            '<textarea rows="3" placeholder="用一两句话介绍你的作品或想法" aria-label="作品介绍"></textarea>',
+    share: '<p style="font-size:13px;color:#4c4356;margin:0 0 10px;">把兔崽baby推特大赛分享给同样喜欢拍片的朋友：</p>' +
+           '<div class="tb-share-row">' +
+           '<button type="button" data-tb-copy>复制页面链接</button>' +
+           '<button type="button" data-tb-share="微信">微信</button>' +
+           '<button type="button" data-tb-share="微博">微博</button>' +
+           '<button type="button" data-tb-share="QQ">QQ</button>' +
+           '</div>' +
+           '<p style="font-size:12.5px;color:#4c4356;margin:0;">也可直接搜索“兔崽baby推特大赛”进入官方网站。</p>',
+    report: '<p style="font-size:13px;color:#4c4356;margin:0 0 10px;">如发现内容问题或有改进建议，请告诉我们：</p>' +
+            '<textarea rows="4" placeholder="请描述你遇到的问题或建议" aria-label="反馈内容"></textarea>',
+    author: '<p style="font-size:13.5px;color:#4c4356;line-height:1.8;margin:0;">加载中…</p>'
+  };
+
+  function openModal(title, desc, type){
+    currentType = type || 'submit';
+    modalTitle.textContent = title;
+    modalDesc.textContent = desc || '';
+    modalBody.innerHTML = bodies[currentType] || bodies.submit;
+    modal.classList.add('is-show');
+    var first = modalBody.querySelector('input,textarea');
+    if(first){ setTimeout(function(){ first.focus(); }, 60); }
+  }
+  function closeModal(){ modal.classList.remove('is-show'); }
+
+  document.querySelectorAll('[data-tb-modal]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var type = btn.getAttribute('data-tb-modal');
+      if(type === 'share'){
+        openModal('分享兔崽baby推特大赛', '好的内容值得被更多人看到。', 'share');
+      }else if(type === 'report'){
+        openModal('反馈与建议', '我们会认真读完每一条反馈。', 'report');
+      }else{
+        openModal('投稿与报名', '填写以下信息，我们会在两个工作日内与你联系。此表单为页面演示，不会真实提交数据。', 'submit');
+      }
+    });
+  });
+  document.getElementById('tbModalClose').addEventListener('click', closeModal);
+  document.getElementById('tbModalCancel').addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); });
+
+  modalBody.addEventListener('click', function(e){
+    var copyBtn = e.target.closest('[data-tb-copy]');
+    if(copyBtn){
+      var text = '兔崽baby推特大赛 · 第六届「拾光」主题赛道';
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(function(){
+          toast('页面信息已复制，可以分享给朋友了');
+        }).catch(function(){ toast('复制失败，请手动分享'); });
+      }else{
+        toast('当前环境暂不支持自动复制');
+      }
+      return;
+    }
+    var shareBtn = e.target.closest('[data-tb-share]');
+    if(shareBtn){
+      toast('已准备分享到' + shareBtn.getAttribute('data-tb-share') + '（演示提示）');
+    }
+  });
+
+  modalOk.addEventListener('click', function(){
+    if(currentType === 'submit'){ toast('已收到你的投稿意向，演示环境不会真实提交'); }
+    else if(currentType === 'report'){ toast('感谢反馈，我们会尽快处理'); }
+    else if(currentType === 'share'){ toast('感谢分享'); }
+    else { closeModal(); }
+    if(currentType !== 'share'){ closeModal(); }
+  });
+
+  /* 回到顶部 */
+  var topBtn = document.getElementById('tbTop');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 520){ topBtn.classList.add('is-show'); }
+    else{ topBtn.classList.remove('is-show'); }
+  }, {passive:true});
+  topBtn.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  /* 数字滚动 */
+  var counted = false;
+  var countEls = document.querySelectorAll('[data-tb-count]');
+  function runCount(){
+    if(counted) return;
+    counted = true;
+    countEls.forEach(function(el){
+      var target = parseInt(el.getAttribute('data-tb-count'), 10) || 0;
+      var start = 0;
+      var dur = 900;
+      var t0 = performance.now();
+      function step(now){
+        var p = Math.min(1, (now - t0) / dur);
+        el.textContent = Math.round(start + (target - start) * (1 - Math.pow(1 - p, 3)));
+        if(p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting) runCount(); });
+    }, {threshold:.4});
+    var statsEl = document.querySelector('.tb-stats');
+    if(statsEl) io.observe(statsEl);
+  }else{
+    runCount();
+  }
+})();
+</script>
+</body>
+                                       </html>
